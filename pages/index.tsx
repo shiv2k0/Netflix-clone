@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { NextPageContext } from "next";
 import { getSession, signOut } from "next-auth/react";
@@ -24,7 +25,7 @@ export default function Home() {
   const {data: user } = useCurrentUser()
   console.log(user)
   return (
-    <main>
+    <>
       <Head>
         <title>Netflix</title>
         <link
@@ -32,15 +33,7 @@ export default function Home() {
           href="https://pngimg.com/uploads/netflix/small/netflix_PNG10.png"
         />
       </Head>
-      <h1 className="">Let's build Netflix Clone</h1>
-      <p className="text-white">Logged in as : {user?.name}</p>
-      <button
-        onClick={() => signOut()}
-        type="button"
-        className="w-full h-10 bg-white"
-      >
-        Logout
-      </button>
-    </main>
+      <Navbar />
+    </>
   );
 }
